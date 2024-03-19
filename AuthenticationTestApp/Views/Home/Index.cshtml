@@ -1,0 +1,50 @@
+﻿@model InputLogInModel
+@{
+    ViewData["Title"] = "LogIn Page";
+}
+@if (ViewBag.ImageBase64Code is null)
+{
+
+    <div class="hold-transition login-page">
+        <div class="card-body login-card-body">
+
+            <form id="account" method="post">
+
+                <div class="input-group mb-3">
+                    <p class="login-box-msg">Logg In</p>
+
+
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                </div>
+
+                <input asp-for="@Model.UserName" class="form-control" placeholder="UserName" />
+
+
+                <span asp-validation-for="@Model.UserName" class="text-danger"></span>
+
+
+                <br />
+
+
+                <input asp-for="@Model.Password" class="form-control" placeholder="Password" />
+
+                <span asp-validation-for="@Model.Password" class="text-danger"></span>
+                <br />
+
+                <div class="col-4">
+                    <button type="submit" class="btn btn-primary">Log in</button>
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+}
+else
+{
+    <img src="data:image/png;base64,@ViewBag.ImageBase64Code" alt="test">
+
+}
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
